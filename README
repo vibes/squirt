@@ -17,6 +17,7 @@ Getting started:
 
 
   To run the server:
-  $ node squirt/squirt.js
+  $ export NODE_PATH="/usr/local/lib/node"
+  $ node node/squirt.js
 
 
