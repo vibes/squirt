@@ -6,7 +6,7 @@ var rclient = redis.createClient(6000, "localhost");
 app.get('/video', function(req, res){
   res.send("I'm some video");
 });
-app.post('/cmd/:type/:data', function(req, res) {
+app.post('/cmd/:type/:data?', function(req, res) {
 	var command = {
 		"type":null,
 		"data":null
