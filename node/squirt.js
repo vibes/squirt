@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express.createServer();
 
-app.get('/', function(req, res){
-  res.send('hello world');
+app.get('/video', function(req, res){
+  res.send("I'm some video");
 });
 
 app.configure(function(){
