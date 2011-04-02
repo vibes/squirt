@@ -2,8 +2,21 @@ Microcontroller-backed hydrolic avian repelent device service
 
 contributors: ggrise
 
+Getting started:
 
-To run the server:
-$ node squirt/squirt.js
+  Install brew
+
+  Get Node
+  $ brew install node
+
+  Install npm (node package manager)
+  $ curl http://npmjs.org/install.sh | sh
+
+  Use npm to install squirt dependencies
+  $ npm install express
+
+
+  To run the server:
+  $ node squirt/squirt.js
 
 
