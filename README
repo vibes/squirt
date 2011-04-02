@@ -1,3 +1,9 @@
 Microcontroller-backed hydrolic avian repelent device service
 
 contributors: ggrise
+
+
+To run the server:
+$ node squirt/squirt.js
+
+
