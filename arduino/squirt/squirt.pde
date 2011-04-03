@@ -104,6 +104,9 @@ void processCommand(char command){
     case 'y':
       moveY( atoi(buffer) ); 
       break;
+    case 'f':
+      fire(); 
+      break;
     default:
       //Serial.print("Unknown command: ");
       //Serial.println(command);
@@ -125,7 +128,9 @@ void moveY(int pos) {
   digitalWrite(INFOPIN, LOW);
 
 }
+void fire(){
 
+}
 
 void loop() {
   // if there are incoming bytes available 

@@ -1,28 +1,42 @@
 var express = require('express');
-var redis = require('redis');
 var console = require('console');
 var app = express.createServer();
-var rclient = redis.createClient(6000, "localhost");
+var arduino_client; //make this something
 
 app.get('/video', function(req, res){
   res.send("I'm some video");
 });
 app.post('/cmd/:type/:data?', function(req, res) {
-	var command = {
-		"type":null,
-		"data":null
-	}
-	command.type = req.params.type;
+  var command = {
+    "type":null,
+    "data":null
+  },
+  data = [];
+
+  command.type = req.params.type;
+  command.data = req.params.data;
   console.log(command);
-	command.data = req.params.data;
-	rclient.publish("canon_command",JSON.stringify(command));
-	res.send(JSON.stringify({"status":"OK"}));
+  
+  if(command.type == "move") {
+    var coords = command.data.split(",");
+    data.push("x " + coords[0] + "\n");
+    if(coords.length == 2) {
+      data.push("y " + coords[1] + "\n");
+    }
+  } else {
+    data.push("f\n");
+  }
+  for(var i = data.length;i--;) {
+    // write to client
+    // arduino_client.write(data[i]);
+  }
+
+  res.send(JSON.stringify({"status":"OK"}));
 });
 
 app.configure(function(){
   app.use(express.static(__dirname + '/public'));
 });
-
 
 app.listen(3000);
 console.log('Webserver listening on port 3000')
