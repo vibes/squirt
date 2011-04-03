@@ -125,7 +125,9 @@ void setup() {
   delay(1000);
   Serial.println("done with setup...");
 }
+void fire(){
 
+}
 
 void loop() {
   // if there are incoming bytes available 
