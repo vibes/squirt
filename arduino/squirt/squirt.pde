@@ -15,9 +15,9 @@
 #include <Ethernet.h>
 #include <Servo.h> 
 
-#define XPIN 3
+#define XPIN 11
 #define YPIN 9
-#define CONNPIN 7
+#define CONNPIN 13
 #define INFOPIN 12 
 Servo xservo;
 Servo yservo;
