@@ -1,5 +1,5 @@
 var Squirts = (function($){
-  var pageBody,
+  var pageBody,currPos,
 
   init = function(){
     pageBody = $('body');
@@ -9,11 +9,20 @@ var Squirts = (function($){
       window.scrollTo(360, 465);
       // position the background video.
       positionBG(); 
+      currPos = getPos();
     }, 0);
 
     $(window).scroll(positionBG);
     $(window).scroll(sendCoords);
-    
+    $(window).bind('touchStart',alert);
+    $('#control').bind('click',squirt); 
+  },
+
+  getPos = function(){
+    return {
+      x:(20+(pageBody.scrollLeft() / 10)),
+      y:(20+(pageBody.scrollTop() / 10))
+    };
   },
 
   /*
@@ -24,7 +33,11 @@ var Squirts = (function($){
   },
 
   sendCoords = function(){
-    $.post('/cmd/move/' + (pageBody.scrollLeft() / 10) + ',' + (pageBody.scrollTop() / 10 ));
+    $.post('/cmd/move/' + (20+(pageBody.scrollLeft() / 10)) + ',' + (20+(pageBody.scrollTop() / 10)));
+  },
+
+  squirt = function(){
+    $.post('/cmd/fire/');
   };
 
   return {

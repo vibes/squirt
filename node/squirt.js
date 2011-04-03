@@ -1,5 +1,6 @@
 var express = require('express');
 var redis = require('redis');
+var console = require('console');
 var app = express.createServer();
 var rclient = redis.createClient(6000, "localhost");
 
@@ -12,6 +13,7 @@ app.post('/cmd/:type/:data?', function(req, res) {
 		"data":null
 	}
 	command.type = req.params.type;
+  console.log(command);
 	command.data = req.params.data;
 	rclient.publish("canon_command",JSON.stringify(command));
 	res.send(JSON.stringify({"status":"OK"}));
