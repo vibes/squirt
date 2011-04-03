@@ -24,7 +24,7 @@ var Squirts = (function($){
   },
 
   sendCoords = function(){
-    $.post('/cmd/move/' + (pageBody.scrollLeft()) + ',' + (pageBody.scrollTop()));
+    $.post('/cmd/move/' + (pageBody.scrollLeft() / 10) + ',' + (pageBody.scrollTop() / 10 ));
   };
 
   return {
