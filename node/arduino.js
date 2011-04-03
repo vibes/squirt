@@ -6,7 +6,7 @@
 
 var net = require('net'),
 	redis = require('redis'),
-	rclient = redis.createClient(6000, 'localhost');
+	rclient = redis.createClient(6000, 'localhost'),
 	sys = require('sys');
 
 //receiving command from the web interface or whatever
@@ -39,6 +39,9 @@ var arduino_server = net.createServer(function(stream) {
 	stream.on("end", function() {
 		delete arduino_clients[stream.remoteAddress]
 		stream.end();
+	});
+	stream.on('error', function (exc) {
+		    sys.log("ignoring exception: " + exc);
 	});
 });
 rclient.subscribe("canon_command");
