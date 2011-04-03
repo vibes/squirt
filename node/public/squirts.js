@@ -6,7 +6,7 @@ var Squirts = (function($){
 
     setTimeout(function() { 
       // move screen to middle
-      window.scrollTo(360, 465);
+      window.scrollTo(735, 705);
       // position the background video.
       positionBG(); 
       currPos = getPos();
@@ -20,8 +20,8 @@ var Squirts = (function($){
 
   getPos = function(){
     return {
-      x:(20+(pageBody.scrollLeft() / 10)),
-      y:(20+(pageBody.scrollTop() / 10))
+      x:(20+parseInt(pageBody.scrollLeft() / 10,10)),
+      y:(20+parseInt(pageBody.scrollTop() / 10,10))
     };
   },
 
@@ -33,7 +33,8 @@ var Squirts = (function($){
   },
 
   sendCoords = function(){
-    $.post('/cmd/move/' + (20+(pageBody.scrollLeft() / 10)) + ',' + (20+(pageBody.scrollTop() / 10)));
+    var coords = getPos();
+    $.post('/cmd/move/' + coords['x'] + ',' + coords['y'] );
   },
 
   squirt = function(){
