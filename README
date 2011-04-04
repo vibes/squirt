@@ -14,7 +14,8 @@ Getting started:
 
   Use npm to install squirt dependencies
   $ npm install express
-
+  $ npm install serialport
+  $ npm install chain-gang
 
   To run the server:
   $ export NODE_PATH="/usr/local/lib/node"

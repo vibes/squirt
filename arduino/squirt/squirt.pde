@@ -135,7 +135,6 @@ void loop() {
 
   if (Serial.available() > 0) {
     char c = Serial.read();
-
     if (c == '\n'){
       buffer[bufferIndex] = '\0';
       processCommand(command);

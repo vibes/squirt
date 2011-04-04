@@ -6,7 +6,7 @@ var Squirts = (function($){
 
     setTimeout(function() { 
       // move screen to middle
-      window.scrollTo(735, 705);
+      window.scrollTo(705, 705);
       // position the background video.
       positionBG(); 
       currPos = getPos();
