@@ -1,7 +1,11 @@
 var express = require('express');
 var console = require('console');
 var app = express.createServer();
-var arduino_client; //make this something
+var serialport = require('serialport');
+// alter serial port based on your setup
+var arduino_client = new serialport.SerialPort("/dev/cu.usbserial-A600enOT", { 
+    baudrate: 9600
+});
 
 app.get('/video', function(req, res){
   res.send("I'm some video");
@@ -28,7 +32,7 @@ app.post('/cmd/:type/:data?', function(req, res) {
   }
   for(var i = data.length;i--;) {
     // write to client
-    // arduino_client.write(data[i]);
+    arduino_client.write(data[i]);
   }
 
   res.send(JSON.stringify({"status":"OK"}));
